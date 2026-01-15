@@ -1,0 +1,121 @@
+<div class="page">
+  <header class="hero">
+    <h1>Email Inteligente</h1>
+    <p class="lead">
+      Upload de .txt ou .pdf, colagem de texto, classificação Produtivo vs Improdutivo e sugestão de resposta em PT-BR.
+    </p>
+    <div class="hero-meta">
+      <span class="chip">Upload seguro</span>
+      <span class="chip">Classificação instantânea</span>
+      <span class="chip">Resposta sugerida</span>
+    </div>
+  </header>
+
+  <section class="grid">
+    <div class="card card-input">
+      <div class="card-head">
+        <h2>Entrada</h2>
+        <span class="badge">Passo 1</span>
+      </div>
+      <p class="muted">Envie um arquivo ou cole o texto do email para classificar.</p>
+
+      <label class="dropzone" for="fileInput">
+        <input
+          id="fileInput"
+          type="file"
+          accept=".txt,application/pdf"
+          (change)="handleFileChange($event)"
+        />
+        <div class="drop-content">
+          <div class="icon-circle">⤓</div>
+          <div>
+            <strong>Solte ou escolha um .txt/.pdf</strong>
+            <p class="muted">Tamanho pequeno e sem dados sensíveis</p>
+          </div>
+        </div>
+      </label>
+
+      <div class="file-row" *ngIf="selectedFile as file">
+        <div>
+          <p class="file-name">{{ file.name }}</p>
+          <p class="muted">{{ file.type || 'arquivo' }}</p>
+        </div>
+        <button class="ghost" type="button" (click)="selectedFile = null">Remover</button>
+      </div>
+
+      <div class="divider">ou</div>
+
+      <label class="field">
+        <span>Texto do email</span>
+        <textarea
+          rows="8"
+          placeholder="Cole aqui o corpo do email"
+          [(ngModel)]="emailText"
+        ></textarea>
+      </label>
+
+      <div class="actions">
+        <button class="ghost" type="button" (click)="clearInputs()">Limpar</button>
+        <button class="primary" type="button" (click)="submit()" [disabled]="loading">
+          {{ loading ? 'Processando...' : 'Classificar e sugerir resposta' }}
+        </button>
+      </div>
+
+      <p class="error" *ngIf="error">{{ error }}</p>
+    </div>
+
+    <div class="card card-result">
+      <div class="card-head">
+        <h2>Resultado</h2>
+        <span class="badge accent">Passo 2</span>
+      </div>
+
+      <div class="skeleton" *ngIf="loading">
+        <div class="pulse title"></div>
+        <div class="pulse line"></div>
+        <div class="pulse line short"></div>
+      </div>
+
+      <ng-container *ngIf="!loading">
+        <div *ngIf="result as res; else idle">
+          <div class="pill category" [class.produtivo]="res.category === 'Produtivo'" [class.improdutivo]="res.category === 'Improdutivo'">
+            {{ res.category }}
+            <span *ngIf="res.confidence">• {{ (res.confidence || 0) * 100 | number:'1.0-0' }}% conf</span>
+          </div>
+
+          <p class="suggestion">{{ res.suggestion }}</p>
+
+          <ul class="meta">
+            <li>
+              <strong>Fonte</strong>
+              <span>{{ res.source || 'API' }}</span>
+            </li>
+            <li>
+              <strong>Arquivo</strong>
+              <span>{{ res.fileName || '—' }}</span>
+            </li>
+            <li>
+              <strong>Entradas</strong>
+              <span>
+                {{ emailText ? 'Texto' : '' }}
+                {{ selectedFile ? (emailText ? ' + arquivo' : 'Arquivo') : (emailText ? '' : '—') }}
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        <ng-template #idle>
+          <div class="idle-state">
+            <p class="muted">Envie um email para ver a classificação e a resposta sugerida.</p>
+            <ul>
+              <li>Suporta .txt ou .pdf</li>
+              <li>Classificação Produtivo vs Improdutivo</li>
+              <li>Sugestão de resposta em PT-BR</li>
+            </ul>
+          </div>
+        </ng-template>
+      </ng-container>
+    </div>
+  </section>
+</div>
+
