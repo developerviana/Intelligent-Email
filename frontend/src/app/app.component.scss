@@ -275,7 +275,7 @@ button {
 }
 
 button:hover {
-	transform: translateY(-1px);
+	transform: translateY(-2px); /* Feedback tátil mais evidente */
   color: var(--text-primary);
   border-color: var(--text-tertiary);
 }
