@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap');
 
 * {
 	box-sizing: border-box;
@@ -6,10 +6,16 @@
 
 body {
 	margin: 0;
-	font-family: 'Space Grotesk', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-	background: #0b1018;
+	font-family: 'Inter', system-ui, -apple-system, sans-serif;
+	background: #f8fafc; /* Slate 50 - Fundo mais limpo */
+  color: #0f172a; /* Slate 900 - Contraste suave */
+  -webkit-font-smoothing: antialiased;
 }
 
-a {
-	color: inherit;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+button, input, textarea {
+  font-family: inherit;
 }
