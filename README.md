@@ -41,21 +41,9 @@ Email-Inteligente/
 -   Angular CLI (`npm install -g @angular/cli`)
 -   Python 3.10+ (para o backend)
 
-### Rodando o Frontend
+### Deploy
 
-1.  Acesse a pasta do frontend:
-    ```bash
-    cd frontend
-    ```
-2.  Instale as dependências:
-    ```bash
-    npm install
-    ```
-3.  Inicie o servidor de desenvolvimento:
-    ```bash
-    ng serve
-    ```
-4.  Acesse `http://localhost:4200` no seu navegador.
+O frontend da aplicação é implantado automaticamente na Vercel.
 
 ## 📝 Licença
 
