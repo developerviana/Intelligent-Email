@@ -227,7 +227,7 @@ h1 {
 /* --- Input Area --- */
 textarea {
 	width: 100%;
-	min-height: 160px;
+	min-height: 180px; /* Mais espaço para texto */
 	background: var(--bg-page);
 	border: 1px solid var(--border);
 	border-radius: var(--radius-lg);
