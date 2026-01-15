@@ -1,1 +1,15 @@
 NOTAS_TECNICAS.md
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+env/
+.env
+
+# Angular/Node
+node_modules/
+dist/
+.angular/
+
