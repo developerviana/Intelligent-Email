@@ -23,7 +23,7 @@ Aplicação web inteligente para classificação automática de e-mails e sugest
 
 ### Backend
 -   **Framework**: FastAPI (Python 3.12)
--   **IA & NLP**: Scikit-Learn, NLTK (Natural Language Toolkit).
+-   **IA & NLP**: Scikit-Learn (Machine Learning).
 -   **Processamento**: PyPDF para extração de dados.
 -   **Arquitetura**: REST API com suporte a CORS e Upload de Arquivos.
 
@@ -53,7 +53,7 @@ source venv/bin/activate  # Linux/Mac
 .\venv\Scripts\activate   # Windows
 
 # Instale as dependências
-pip install fastapi uvicorn scikit-learn nltk pypdf python-multipart
+pip install fastapi uvicorn scikit-learn pypdf python-multipart
 
 # Inicie o servidor
 python main.py

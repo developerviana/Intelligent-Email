@@ -7,7 +7,6 @@ API REST desenvolvida com **FastAPI** para classificar e-mails utilizando Inteli
 -   **Python 3.12**
 -   **FastAPI**: Framework web de alta performance.
 -   **Scikit-Learn**: Algoritmos de Machine Learning (LinearSVC, MultinomialNB).
--   **NLTK**: Processamento de Linguagem Natural (Stopwords, Tokenização).
 -   **PyPDF**: Extração de texto de arquivos PDF.
 
 ## 🚀 Como Rodar Localmente
@@ -30,7 +29,7 @@ API REST desenvolvida com **FastAPI** para classificar e-mails utilizando Inteli
 
     *Nota: Se o arquivo `requirements.txt` não existir, instale manualmente:*
     ```bash
-    pip install fastapi uvicorn scikit-learn nltk pypdf python-multipart
+    pip install fastapi uvicorn scikit-learn pypdf python-multipart
     ```
 
 3.  **Inicie o servidor:**
