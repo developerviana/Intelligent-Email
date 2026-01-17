@@ -13,3 +13,5 @@ node_modules/
 dist/
 .angular/
 
+# IDE
+.vscode/
