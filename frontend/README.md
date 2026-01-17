@@ -4,7 +4,7 @@ Interface moderna e responsiva desenvolvida em **Angular 17** para interação c
 
 ## 🎨 Funcionalidades e Design
 
--   **Dashboard Otimizado**: Layout de "visão única" (viewport fit) para monitores 1080p.
+-   **Dashboard Otimizado**: Layout de "visão única" (viewport fit) responsivo para qualquer tamanho de tela.
 -   **Design System**: Background com textura "Dot-Grid", cartões flutuantes e tipografia limpa.
 -   **Interatividade**:
     -   Drag & Drop para upload de arquivos.
