@@ -36,7 +36,6 @@ export class AppComponent {
   error = '';
   result: ClassificationResult | null = null;
   apiUrl = 'http://localhost:8000/api';
-  useMock = false;
 
   constructor(private readonly http: HttpClient) {}
 
@@ -79,13 +78,6 @@ export class AppComponent {
     this.error = '';
     this.result = null;
 
-    if (this.useMock) {
-      const textSource = this.emailText || this.fileTextPreview || this.selectedFile?.name || '';
-      this.result = this.mockClassify(textSource);
-      this.loading = false;
-      return;
-    }
-
     const formData = new FormData();
     if (this.emailText.trim()) {
       formData.append('text', this.emailText.trim());
@@ -106,41 +98,9 @@ export class AppComponent {
         this.loading = false;
       },
       error: () => {
-        const textSource = this.emailText || this.fileTextPreview || this.selectedFile?.name || '';
-        this.result = this.mockClassify(textSource);
-        this.error = 'API indisponível no momento. Resultado gerado em modo demo.';
+        this.error = 'Ocorreu um erro na comunicação com o servidor. Tente novamente mais tarde.';
         this.loading = false;
       }
     });
-  }
-
-  private mockClassify(text: string): ClassificationResult {
-    const normalized = text.toLowerCase();
-    const isImprodutivo = /feliz|parabéns|obrigado|agradeço|bom dia|boa tarde|boa noite/.test(normalized);
-    const isFollowUp = /status|andamento|atualiza|retorno|prazo|protocolo|ticket/.test(normalized);
-    const isAttachment = /anexo|arquivo|segue em anexo|pdf|xls|txt/.test(normalized);
-
-    let category: Category = 'Produtivo';
-    if (isImprodutivo && !isFollowUp) {
-      category = 'Improdutivo';
-    }
-
-    const suggestion = category === 'Improdutivo'
-      ? 'Agradecer a mensagem de cortesia e informar que não há ação pendente.'
-      : isFollowUp
-        ? 'Confirmar recepção, informar status atual e, se necessário, fornecer prazo estimado para próxima atualização.'
-        : isAttachment
-          ? 'Confirmar recebimento do anexo e indicar o próximo passo (ex.: análise técnica ou registro do chamado).'
-          : 'Responder com uma confirmação de recebimento e solicitar detalhes adicionais, se faltarem.';
-
-    const confidenceBase = category === 'Produtivo' ? 0.76 : 0.68;
-
-    return {
-      category,
-      suggestion,
-      confidence: confidenceBase,
-      source: 'mock-local',
-      fileName: this.selectedFile?.name || undefined
-    };
   }
 }

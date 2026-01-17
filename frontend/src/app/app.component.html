@@ -78,24 +78,6 @@
           </div>
 
           <p class="suggestion">{{ res.suggestion }}</p>
-
-          <ul class="meta">
-            <li>
-              <strong>Fonte</strong>
-              <span>{{ res.source || 'API' }}</span>
-            </li>
-            <li>
-              <strong>Arquivo</strong>
-              <span>{{ res.fileName || '—' }}</span>
-            </li>
-            <li>
-              <strong>Entradas</strong>
-              <span>
-                {{ emailText ? 'Texto' : '' }}
-                {{ selectedFile ? (emailText ? ' + arquivo' : 'Arquivo') : (emailText ? '' : '—') }}
-              </span>
-            </li>
-          </ul>
         </div>
 
         <ng-template #idle>
@@ -104,7 +86,6 @@
             <ul>
               <li>Suporta .txt ou .pdf</li>
               <li>Classificação Produtivo vs Improdutivo</li>
-              <li>Sugestão de resposta em PT-BR</li>
             </ul>
           </div>
         </ng-template>
