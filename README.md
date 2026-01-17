@@ -1,49 +1,82 @@
 # Email Inteligente
 
-[![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)]()
+[![Status](https://img.shields.io/badge/Status-Funcional-brightgreen)]()
 [![Angular](https://img.shields.io/badge/Frontend-Angular%2017-red)](https://angular.io/)
 [![Python](https://img.shields.io/badge/Backend-FastAPI-blue)](https://fastapi.tiangolo.com/)
+[![AI](https://img.shields.io/badge/AI-Scikit--Learn-orange)](https://scikit-learn.org/)
 
-Aplicação web inteligente para classificação automática de e-mails e sugestão de respostas utilizando Inteligência Artificial. O objetivo é aumentar a produtividade identificando e-mails importantes e agilizando o processo de resposta.
+Aplicação web inteligente para classificação automática de e-mails e sugestão de respostas utilizando Inteligência Artificial. O sistema processa textos e arquivos (PDF/TXT), categorizando-os entre "Produtivo" ou "Improdutivo" e sugerindo ações imediatas.
 
 ## 🚀 Funcionalidades
 
--   **Classificação Automática**: Analisa o conteúdo do e-mail (texto ou arquivo PDF/TXT) e categoriza como "Produtivo" ou "Improdutivo".
--   **Sugestão de Resposta**: Gera uma resposta automática contextualizada para e-mails classificados.
--   **Upload de Arquivos**: Suporte para arrastar e soltar arquivos `.txt` e `.pdf`.
--   **Interface Moderna**: Design limpo e responsivo focado na experiência do usuário.
+-   **Classificação via IA**: Utiliza algoritmo de Machine Learning (*LinearSVC* e *MultinomialNB*) para categorizar e-mails.
+-   **Processamento de Arquivos**: Suporte nativo para leitura e extração de texto em arquivos `.pdf` e `.txt`.
+-   **Interface Otimizada**: UI Dashboard compacta com design "Dot-Grid", focado em produtividade e visualização clara.
+-   **Sugestão de Resposta**: Gera templates de resposta baseados na categoria identificada.
 
 ## 🛠️ Tecnologias Utilizadas
 
-O projeto segue uma arquitetura modular dividida entre frontend e backend:
-
 ### Frontend
 -   **Framework**: Angular 17 (Standalone Components)
--   **Estilização**: SCSS com variáveis CSS e design system moderno.
--   **HTTP Client**: Integração preparada para consumir a API REST.
+-   **Estilização**: SCSS, CSS Variables, Layout Responsivo.
+-   **Hospedagem**: Vercel (CI/CD Automático).
 
-### Backend (Em Breve)
--   **Framework**: FastAPI (Python)
--   **IA/NLP**: Processamento de Linguagem Natural para classificação e geração de texto.
+### Backend
+-   **Framework**: FastAPI (Python 3.12)
+-   **IA & NLP**: Scikit-Learn, NLTK (Natural Language Toolkit).
+-   **Processamento**: PyPDF para extração de dados.
+-   **Arquitetura**: REST API com suporte a CORS e Upload de Arquivos.
 
 ## 📂 Estrutura do Projeto
 
 ```bash
 Email-Inteligente/
-├── frontend/           # Aplicação Angular (Interface do Usuário)
-└── backend/            # API Python (Lógica de IA e Processamento) - Em desenvolvimento
+├── frontend/           # Aplicação Angular (UI/UX)
+│   ├── src/app/        # Componentes e Lógica
+│   └── vercel.json     # Configuração de Deploy
+└── backend/            # API Python
+    ├── main.py         # Aplicação FastAPI e Endpoints
+    └── train_model.py  # Pipeline de Treinamento da IA
 ```
 
-## 🏁 Como Executar
+## 🏁 Como Executar Localmente
 
-### Pré-requisitos
--   Node.js (v18+)
--   Angular CLI (`npm install -g @angular/cli`)
--   Python 3.10+ (para o backend)
+### 1. Backend (API)
+Certifique-se de ter o Python 3.10+ instalado.
 
-### Deploy
+```bash
+cd backend
+# Crie um ambiente virtual (recomendado)
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# ou
+.\venv\Scripts\activate   # Windows
 
-O frontend da aplicação é implantado automaticamente na Vercel.
+# Instale as dependências
+pip install fastapi uvicorn scikit-learn nltk pypdf python-multipart
+
+# Inicie o servidor
+python main.py
+# O servidor rodará em http://localhost:8000
+```
+
+### 2. Frontend (Interface)
+Certifique-se de ter o Node.js (v18+) e Angular CLI instalados.
+
+```bash
+cd frontend
+# Instale as dependências
+npm install
+
+# Inicie a aplicação
+ng serve
+# Acesso em http://localhost:4200
+```
+
+## 🚀 Deploy
+
+-   **Frontend**: Configurado para deploy automático na **Vercel**.
+-   **Backend**: Pronto para deploy em qualquer plataforma compatível com Python/Docker (Render, Railway, AWS).
 
 ## 📝 Licença
 
