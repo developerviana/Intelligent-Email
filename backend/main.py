@@ -1,6 +1,8 @@
 from fastapi import FastAPI, Form, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from ai_engine import ai_engine 
+from ai_engine import ai_engine
+import io
+from pypdf import PdfReader
 
 app = FastAPI(title="Email Inteligente API")
 
@@ -25,7 +27,21 @@ async def classify_email(text: str = Form(None), file: UploadFile = File(None)):
     
     if file:
         file_bytes = await file.read()
-        content += " " + file_bytes.decode("utf-8", errors="ignore")
+        filename = file.filename.lower()
+        
+        if filename.endswith(".pdf"):
+            try:
+                reader = PdfReader(io.BytesIO(file_bytes))
+                extracted_text = ""
+                for page in reader.pages:
+                    extracted_text += page.extract_text() + " "
+                content += " " + extracted_text
+            except Exception as e:
+                print(f"Erro ao ler PDF: {e}")
+                content += " " # Falha silenciosa para não quebrar fluxo, logs no console
+        else:
+            # Assume texto/txt
+            content += " " + file_bytes.decode("utf-8", errors="ignore")
 
     content = content.strip()
     

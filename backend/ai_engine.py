@@ -13,17 +13,27 @@ class AIEngine:
     def __init__(self):
         self.model = None
         self.vectorizer = None
+        # Dados de treino refinados para o cenário financeiro/corporativo
         self.training_data = [
-            ("Lembrem-se da reunião de orçamento amanhã às 14h.", "Produtivo"),
-            ("Segue em anexo o relatório mensal de vendas.", "Produtivo"),
-            ("Precisamos revisar as metas do Q3 urgente.", "Produtivo"),
-            ("Confirmação de agendamento de call com cliente.", "Produtivo"),
-            ("As notas fiscais foram emitidas e enviadas.", "Produtivo"),
-            ("Vamos marcar um happy hour na sexta?", "Improdutivo"),
-            ("Olha esse meme engraçado que vi no gato.", "Improdutivo"),
-            ("Futebol hoje a noite, quem anima?", "Improdutivo"),
-            ("Promoção de viagens imperdível, clique aqui.", "Improdutivo"),
-            ("Fofoca: você viu o que aconteceu na copa?", "Improdutivo"),
+            # PRODUTIVO: Status, Arquivos, Requisições
+            ("Gostaria de saber o status da minha requisição número 1234.", "Produtivo"),
+            ("Segue em anexo o comprovante de pagamento para análise.", "Produtivo"),
+            ("Qual o prazo para aprovação do contrato enviado ontem?", "Produtivo"),
+            ("Encaminho o balanço mensal conforme solicitado.", "Produtivo"),
+            ("Precisamos agendar uma reunião para revisar os KPI financeiros.", "Produtivo"),
+            ("Favor confirmar o recebimento da nota fiscal e previsão de pagamento.", "Produtivo"),
+            ("Atualização sobre o projeto de migração de dados.", "Produtivo"),
+            ("Solicito alteração de dados cadastrais na minha conta.", "Produtivo"),
+            
+            # IMPRODUTIVO: Cumprimentos vazios, Conteúdo irrelevante, Spam
+            ("Desejo a todos um Feliz Natal e Próspero Ano Novo!", "Improdutivo"),
+            ("Bom dia, apenas passando para desejar uma ótima semana.", "Improdutivo"),
+            ("Agradeço a atenção, muito obrigado.", "Improdutivo"),
+            ("Você viu o jogo ontem? Foi incrível.", "Improdutivo"),
+            ("Promoção exclusiva para você: clique aqui e ganhe prêmios.", "Improdutivo"),
+            ("Pessoal, trouxemos bolo para comemorar o aniversário do João.", "Improdutivo"),
+            ("Feliz páscoa para você e sua família.", "Improdutivo"),
+            ("Qual o cardápio do almoço de hoje?", "Improdutivo"),
         ]
         self._train_model()
 
@@ -47,18 +57,18 @@ class AIEngine:
         return prediction, round(confidence, 2)
 
     def generate_response(self, category: str):
-        """Gera uma resposta baseada na categoria (Simulação de GPT)."""
+        """Gera uma resposta corporativa baseada na categoria."""
         if category == "Produtivo":
             responses = [
-                "Recebido. Vou analisar e retorno em breve.",
-                "Obrigado pelo envio. Já coloquei na minha lista de prioridades.",
-                "Confirmado. Nos falamos conforme o agendado."
+                "Sua solicitação foi recebida e encaminhada para o setor responsável. Retornaremos com o status em breve.",
+                "Confirmamos o recebimento do arquivo. Nossa equipe fará a análise e entrará em contato se houver pendências.",
+                "Obrigado pelo contato. Seu ticket foi priorizado na nossa fila de atendimento."
             ]
         else:
             responses = [
-                "No momento estou focado em tarefas prioritárias. Conversamos depois.",
-                "Agradeço, mas não posso participar agora.",
-                "Vou arquivar para leitura posterior."
+                "Agradecemos o contato e a cortesia. Desejamos uma ótima semana!",
+                "Recebido. Caso tenha alguma solicitação específica no futuro, estamos à disposição.",
+                "Agradecemos a mensagem. Equipe Financeira."
             ]
         return random.choice(responses)
 
