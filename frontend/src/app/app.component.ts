@@ -36,7 +36,7 @@ export class AppComponent {
   error = '';
   result: ClassificationResult | null = null;
   apiUrl = 'http://localhost:8000/api';
-  useMock = true; // desabilite quando o backend estiver disponível
+  useMock = false;
 
   constructor(private readonly http: HttpClient) {}
 

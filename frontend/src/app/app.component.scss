@@ -32,16 +32,14 @@
   color: var(--text-primary);
   background-color: #f1f5f9; /* Slate 100 base */
   
-  /* Textura de Dot Grid + Blur de Profundidade */
+  /* Textura de Dot Grid + Foco Central */
   background-image: 
     /* Camada 1: Grade de pontos infinitos */
     radial-gradient(#cbd5e1 1.5px, transparent 1.5px),
-    /* Camada 2: Glow Ambar no topo esquerdo */
-    radial-gradient(circle at 10% 10%, rgba(251, 191, 36, 0.25) 0%, transparent 40%),
-    /* Camada 3: Glow Slate/Azulado na direita inferior */
-    radial-gradient(circle at 90% 90%, rgba(148, 163, 184, 0.25) 0%, transparent 40%);
+    /* Camada 2: Luz Central (Fundo limpo no meio) */
+    radial-gradient(circle at center, #ffffff 0%, rgba(241, 245, 249, 0) 70%);
 
-  background-size: 24px 24px, 100% 100%, 100% 100%;
+  background-size: 24px 24px, 100% 100%;
   background-attachment: fixed;
 }
 
