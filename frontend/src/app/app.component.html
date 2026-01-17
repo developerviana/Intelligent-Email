@@ -4,11 +4,6 @@
     <p class="lead">
       Upload de .txt ou .pdf, colagem de texto, classificação Produtivo vs Improdutivo e sugestão de resposta em PT-BR.
     </p>
-    <div class="hero-meta">
-      <span class="chip">Upload seguro</span>
-      <span class="chip">Classificação instantânea</span>
-      <span class="chip">Resposta sugerida</span>
-    </div>
   </header>
 
   <section class="grid">
@@ -18,7 +13,6 @@
         <span class="badge">Passo 1</span>
       </div>
       <p class="muted">Envie um arquivo ou cole o texto do email para classificar.</p>
-
       <label class="dropzone" for="fileInput">
         <input
           id="fileInput"
@@ -48,7 +42,7 @@
       <label class="field">
         <span>Texto do email</span>
         <textarea
-          rows="8"
+          rows="5"
           placeholder="Cole aqui o corpo do email"
           [(ngModel)]="emailText"
         ></textarea>
