@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'PLACEHOLDER_BACKEND_URL/api'
+  apiUrl: 'https://intelligent-email-l6rs-git-main-developervianas-projects.vercel.app/api'
 };
