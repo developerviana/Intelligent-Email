@@ -34,7 +34,6 @@ class AIEngine:
         
         self.model = make_pipeline(CountVectorizer(), MultinomialNB())
         self.model.fit(texts, labels)
-        print("🤖 IA: Modelo treinado com sucesso!")
 
     def classify_text(self, text: str):
         """Retorna a categoria e a confiança."""
