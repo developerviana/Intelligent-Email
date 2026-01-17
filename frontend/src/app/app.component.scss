@@ -439,3 +439,32 @@ button:hover {
   color: var(--accent-hover);
   border-color: rgba(245, 158, 11, 0.3);
 }
+
+/* --- Meta Data --- */
+.meta {
+  list-style: none;
+  padding: 24px 0 0;
+  margin: 24px 0 0;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.meta li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.meta strong {
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+.meta span {
+  color: var(--text-primary);
+  font-weight: 600;
+  text-align: right;
+}
