@@ -1,27 +1,45 @@
-# Frontend
+# Email Inteligente - Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+Interface moderna e responsiva desenvolvida em **Angular 17** para interação com a API de classificação de e-mails.
 
-## Development server
+## 🎨 Funcionalidades e Design
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+-   **Dashboard Otimizado**: Layout de "visão única" (viewport fit) para monitores 1080p.
+-   **Design System**: Background com textura "Dot-Grid", cartões flutuantes e tipografia limpa.
+-   **Interatividade**:
+    -   Drag & Drop para upload de arquivos.
+    -   Inputs dinâmicos para texto direto.
+    -   Feedback visual de carregamento e erros.
+-   **Integração**: Conectado via `HttpClient` ao backend FastAPI.
 
-## Code scaffolding
+## 🛠️ Stack Tecnológica
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+-   **Angular 17** (Standalone Components - sem NgModules).
+-   **SCSS**: Uso avançado de mixins e CSS Variables.
+-   **TypeScript**: Tipagem estrita para interfaces de API.
 
-## Build
+## 🚀 Como Rodar Localmente
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1.  **Instale as dependências:**
+    ```bash
+    npm install
+    ```
 
-## Running unit tests
+2.  **Inicie o servidor de desenvolvimento:**
+    ```bash
+    ng serve
+    ```
+    Acesse em: `http://localhost:4200`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 📦 Deploy (Vercel)
 
-## Running end-to-end tests
+Este projeto contém configuração específica para deploy na Vercel:
+-   `vercel.json`: Gerencia o roteamento de SPA (Single Page Application).
+-   `angular.json`: Configurações de build otimizadas ("budget" ajustado).
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+O comando de build utilizado é:
+```bash
+ng build
+```
+Os artefatos são gerados em: `dist/frontend/browser`
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
