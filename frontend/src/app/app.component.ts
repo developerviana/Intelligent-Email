@@ -20,6 +20,8 @@ interface ApiResponse {
   source?: string;
 }
 
+import { environment } from '../environments/environment';
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -35,7 +37,7 @@ export class AppComponent {
   loading = false;
   error = '';
   result: ClassificationResult | null = null;
-  apiUrl = 'http://localhost:8000/api';
+  apiUrl = environment.apiUrl;
 
   constructor(private readonly http: HttpClient) {}
 
