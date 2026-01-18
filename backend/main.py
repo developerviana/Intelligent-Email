@@ -21,7 +21,7 @@ def read_root():
 @app.post("/api/classify")
 async def classify_email(text: str = Form(None), file: UploadFile = File(None)):
     """
-    Recebe o texto do email ou um arquivo e retorna a classificação.
+    Recebe o texto do email ou um arquivo e retorna a classificação!.
     """
     content = text or ""
     
