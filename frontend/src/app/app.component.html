@@ -45,6 +45,8 @@
           rows="5"
           placeholder="Cole aqui o corpo do email"
           [(ngModel)]="emailText"
+          [disabled]="!!selectedFile"
+          [title]="selectedFile ? 'Remova o arquivo para digitar texto' : ''"
         ></textarea>
       </label>
 
